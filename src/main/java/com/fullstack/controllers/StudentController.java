@@ -4,6 +4,8 @@ import com.fullstack.models.Student;
 import com.fullstack.services.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -22,7 +24,7 @@ public class StudentController {
 
     // register new student
     @PostMapping(path = "")
-    public Student addStudent(@RequestBody Student student) {
+    public Student addStudent(@Valid @RequestBody Student student) {
         return studentService.addStudent(student);
     }
 
@@ -30,7 +32,7 @@ public class StudentController {
     @PutMapping(path = "/{studentId}")
     public Student editStudent(
             @PathVariable(name = "studentId") Long id,
-            @RequestBody Student student) {
+            @Valid @RequestBody Student student) {
         return studentService.editStudent(id, student);
     }
 

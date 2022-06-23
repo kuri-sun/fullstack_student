@@ -1,0 +1,57 @@
+name: CICD
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+env:
+  # Postgres
+  POSTGRESQL_VERSION: 13.1
+  POSTGRESQL_DB: students
+  POSTGRESQL_USER: postgres
+  POSTGRESQL_PASSWORD: password
+  # Java
+  JAVA_VERSION: 1.17
+  # DockerHub
+  DOCKER_HUB_USERNAME: s0517019
+  # AWS
+  AWS_REGION: us-east-1
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13.1
+        env:
+          POSTGRES_DB: ${{ env.POSTGRESQL_DB }}
+          POSTGRES_USER: ${{ env.POSTGRESQL_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRESQL_PASSWORD }}
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Frontend Deploy To Heroku
+
+      - name: Docker Login
+        uses: docker/login-action@f3364599c6aa293cdc2b8391b1b56d0c30e45c8a
+        with:
+          username: ${{ env.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Maven Clean Package and Push to Dockerhub
+        run: |
+          ./mvnw --no-transfer-progress clean package \
+            -P jib-push-to-docker
+
+      - name: Backend Deploy To AWS ECS

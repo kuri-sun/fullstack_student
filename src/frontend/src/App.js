@@ -1,29 +1,24 @@
-import { useState, useEffect } from "react";
-import { deleteStudent, getAllStudents } from "./client";
+import {useEffect, useState} from "react";
+import {deleteStudent, getAllStudents} from "./client";
 import {
-  Layout,
-  Menu,
-  Breadcrumb,
-  Table,
-  Spin,
-  Empty,
-  Button,
-  Badge,
-  Tag,
-  Avatar,
-  Radio,
-  Popconfirm,
-  Divider,
+    Avatar,
+    Badge,
+    Breadcrumb,
+    Button,
+    Divider,
+    Empty,
+    Layout,
+    Menu,
+    Popconfirm,
+    Radio,
+    Spin,
+    Table,
+    Tag,
 } from "antd";
-import {
-  TeamOutlined,
-  UserOutlined,
-  LoadingOutlined,
-  PlusOutlined,
-} from "@ant-design/icons";
+import {LoadingOutlined, PlusOutlined, TeamOutlined, UserOutlined,} from "@ant-design/icons";
 import StudentDrawerForm from "./StudentDrawerForm.js";
 import "./App.css";
-import { errorNotification, successNotification } from "./Notification";
+import {errorNotification, successNotification} from "./Notification";
 
 const { Header, Content, Footer, Sider } = Layout;
 
