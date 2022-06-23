@@ -1,8 +1,12 @@
 package com.fullstack.controllers;
 
 import com.fullstack.models.Student;
+import com.fullstack.services.StudentService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
@@ -13,15 +17,16 @@ import static com.fullstack.models.Gender.MALE;
 
 @RestController
 @RequestMapping(path = "api/v1/students")
+@AllArgsConstructor
 public class StudentController {
+
+    private final StudentService studentService;
 
     @GetMapping(path = "")
     public List<Student> getAllStudents() {
-        List<Student> students = Arrays.asList(
-                new Student(1L, "Jamila", "jlksfjsslkdfdl", FEMALE),
-                new Student(2L, "Alex", "jlksfjsslkdfdl", MALE)
-        );
-        return students;
+        return studentService.getAllStudents();
     }
+
+
 
 }
