@@ -256,7 +256,7 @@ function App() {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          <Divider>Haruki Kuriwada</Divider>
+          <Divider>Student FullStack</Divider>
         </Footer>
       </Layout>
     </Layout>

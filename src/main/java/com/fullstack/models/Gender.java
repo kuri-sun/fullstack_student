@@ -4,6 +4,6 @@ public enum Gender {
 
     MALE,
     FEMALE,
-    NOT_PREFER_TO_SAY
+    PREFER_NOT_TO_SAY
 
 }

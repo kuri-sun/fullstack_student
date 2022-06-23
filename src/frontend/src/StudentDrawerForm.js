@@ -159,7 +159,7 @@ function StudentDrawerForm({
               <Select placeholder="Please select a gender">
                 <Option value="MALE">MALE</Option>
                 <Option value="FEMALE">FEMALE</Option>
-                <Option value="OTHER">PERFER NOT TO SAY</Option>
+                <Option value="PREFER_NOT_TO_SAY">PREFER NOT TO SAY</Option>
               </Select>
             </Form.Item>
           </Col>
