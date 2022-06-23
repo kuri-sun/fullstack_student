@@ -20,7 +20,9 @@ public class StudentService {
 
     // register new student to database.
     public Student addStudent(Student student) {
-        // todo: check if email is already taken or not.
+        // check if email is already taken or not.
+        Student foundStudent = studentRepository.findStudentByEmail(student.getEmail());
+        if (foundStudent == null) throw new IllegalStateException("That email has already taken.");
 
         // save to the database.
         return studentRepository.save(student);
