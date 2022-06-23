@@ -31,16 +31,25 @@ public class StudentService {
     // register new student to database.
     public Student editStudent(Long id, Student student) {
         // check if email is already taken or not.
-        Student findStudent = studentRepository.findStudentById(id);
-        if (findStudent == null) throw new IllegalStateException("User not found in the database.");
+        Student foundStudent = studentRepository.findStudentById(id);
+        if (foundStudent == null) throw new IllegalStateException("User not found in the database.");
 
         // set new values
-        findStudent.setName(student.getName());
-        findStudent.setEmail(student.getEmail());
-        findStudent.setGender(student.getGender());
+        foundStudent.setName(student.getName());
+        foundStudent.setEmail(student.getEmail());
+        foundStudent.setGender(student.getGender());
 
         // save to the database.
-        return studentRepository.save(findStudent);
+        return studentRepository.save(foundStudent);
     }
+
+    // delete a student from database
+    public void deleteStudent(Long id) {
+        Student foundStudent = studentRepository.findStudentById(id);
+        if (foundStudent == null) throw new IllegalStateException("User not found in the database.");
+
+        studentRepository.deleteById(id);
+    }
+
 
 }

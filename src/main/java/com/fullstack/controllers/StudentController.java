@@ -14,7 +14,7 @@ public class StudentController {
 
     private final StudentService studentService;
 
-    // get all student data.
+    // get all student data
     @GetMapping(path = "")
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
@@ -32,6 +32,12 @@ public class StudentController {
             @PathVariable(name = "studentId") Long id,
             @RequestBody Student student) {
         return studentService.editStudent(id, student);
+    }
+
+    // delete student
+    @DeleteMapping(path = "/{studentId}")
+    public void deleteStudent(@PathVariable(name = "studentId") Long id) {
+        studentService.deleteStudent(id);
     }
 
 
