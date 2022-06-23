@@ -69,7 +69,7 @@ function StudentDrawerForm({
         });
     } else {
       // send PUT request.
-      editStudent(student)
+      editStudent(selectedStudent.id, student)
         .then(() => {
           onClose();
           successNotification(

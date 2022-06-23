@@ -25,8 +25,8 @@ export const addNewStudent = (student) =>
   }).then(checkStatus);
 
 // POST register new student data to backend.
-export const editStudent = (student) =>
-  fetch(`api/v1/students/${student.id}`, {
+export const editStudent = (studentId, student) =>
+  fetch(`api/v1/students/${studentId}`, {
     headers: {
       "Content-Type": "application/json",
     },
