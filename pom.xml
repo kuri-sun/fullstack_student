@@ -15,8 +15,9 @@
     <description>student-fullstack</description>
     <properties>
         <java.version>17</java.version>
-        <app.image.name>fullstack-student</app.image.name>
+        <app.image.name>student-fullstack</app.image.name>
         <app.image.tag />
+        <aws.ecr.url />
     </properties>
     <dependencies>
         <dependency>
@@ -96,7 +97,7 @@
 
     <profiles>
         <profile>
-            <id>jib-push-to-docker</id>
+            <id>jib-push-to-aws</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
@@ -110,9 +111,6 @@
                            <from>
                                <image>openjdk:17</image>
                            </from>
-                           <to>
-                               <image>s0517019/${app.image.name}:${app.image.tag}</image>
-                           </to>
                            <container>
                                <ports>
                                    <port>8080</port>
@@ -126,7 +124,7 @@
                                <phase>package</phase>
                                <configuration>
                                    <to>
-                                       <image>docker.io/s0517019/${app.image.name}:${app.image.tag}</image>
+                                       <image>${aws.ecr.url}/${app.image.name}:${app.image.tag}</image>
                                    </to>
                                </configuration>
                                <goals>
@@ -138,7 +136,7 @@
                                <phase>package</phase>
                                <configuration>
                                    <to>
-                                       <image>docker.io/s0517019/${app.image.name}:latest</image>
+                                       <image>${aws.ecr.url}/${app.image.name}:latest</image>
                                    </to>
                                </configuration>
                                <goals>
@@ -167,7 +165,7 @@
                                 <image>openjdk:17</image>
                             </from>
                             <to>
-                                <image>s0517019/${app.image.name}:latest</image>
+                                <image>${aws.ecr.url}/${app.image.name}:latest</image>
                             </to>
                             <container>
                                 <ports>
@@ -182,7 +180,7 @@
                                 <phase>package</phase>
                                 <configuration>
                                     <to>
-                                        <image>s0517019/${app.image.name}:latest</image>
+                                        <image>${aws.ecr.url}/${app.image.name}:latest</image>
                                     </to>
                                 </configuration>
                                 <goals>
