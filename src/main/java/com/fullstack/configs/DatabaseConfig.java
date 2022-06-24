@@ -22,6 +22,7 @@ public class DatabaseConfig {
     @Value("${database.password}")
     private String databasePassword;
 
+    @Profile("!dev && !it")
     @Bean
     public DataSource getDataSourceProd() {
 
