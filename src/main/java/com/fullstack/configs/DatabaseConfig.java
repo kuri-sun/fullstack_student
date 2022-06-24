@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 
 import javax.sql.DataSource;
 
-@Profile("!dev && !it")
+@Profile("default")
 @Configuration
 public class DatabaseConfig {
 
@@ -22,7 +22,7 @@ public class DatabaseConfig {
     @Value("${database.password}")
     private String databasePassword;
 
-    @Profile("!dev && !it")
+    @Profile("default")
     @Bean
     public DataSource getDataSourceProd() {
 
