@@ -16,7 +16,7 @@ env:
   JAVA_VERSION: 17
   # DockerHub
   DOCKER_HUB_USERNAME: s0517019
-  DOCKER_IMAGE_REPO_URI: docker.io/s0517019/${app.image.name}
+  APP_IMAGE_IMAGE: student-fullstack
   APP_IMAGE_TAG: ${{ github.sha }}
   # AWS
   AWS_REGION: us-east-1
@@ -78,7 +78,7 @@ jobs:
         with:
           task-definition: task-definition.json
           container-name: ${{ env.AWS_ECS_CONTAINER_NAME }}
-          image: ${{ env.DOCKER_IMAGE_REPO_URI }}:${{ env.APP_IMAGE_TAG }}
+          image: ${{ secrets.AWS_ECR_URL }}/${{ env.APP_IMAGE_IMAGE }}:${{ env.APP_IMAGE_TAG }}
 
       - name: Deploy Amazon ECS Task Definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
