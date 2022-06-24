@@ -15,12 +15,12 @@
     <description>student-fullstack</description>
     <properties>
         <java.version>17</java.version>
+        <database.username />
+        <database.password />
         <app.image.name>student-fullstack</app.image.name>
         <app.image.tag />
         <aws.ecr.url />
         <database.url />
-        <database.username />
-        <database.password />
     </properties>
     <dependencies>
         <dependency>
