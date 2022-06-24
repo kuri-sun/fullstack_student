@@ -18,6 +18,9 @@
         <app.image.name>student-fullstack</app.image.name>
         <app.image.tag />
         <aws.ecr.url />
+        <database.url />
+        <database.username />
+        <database.password />
     </properties>
     <dependencies>
         <dependency>

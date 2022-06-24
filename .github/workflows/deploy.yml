@@ -24,6 +24,8 @@ env:
   AWS_ECS_CONTAINER_NAME: student-fullstack-container
   AWS_ECS_SERVICE_NAME: student-fullstack-service
   AWS_ECS_CLUSTER_NAME: student-fullstack
+  # PRODUCTION DATABASE
+  DATABASE_URL: ${{ secret }}
 
 jobs:
   deploy:
@@ -64,7 +66,10 @@ jobs:
           ./mvnw --no-transfer-progress clean package \
             -P jib-push-to-aws \
             -Daws.ecr.url=${{ secrets.AWS_ECR_URL }} \
-            -Dapp.image.tag=${{ env.APP_IMAGE_TAG }}
+            -Dapp.image.tag=${{ env.APP_IMAGE_TAG }} \
+            -Ddatabase.url=${{ secrets.PROD_DATABASE_URL }} \
+            -Ddatabase.username=${{ secrets.PROD_DATABASE_USERNAME }} \
+            -Ddatabase.password=${{ secrets.PROD_DATABASE_PASSWORD }}
 
       - name: Download ECS Task Definition JSON file
         env:
