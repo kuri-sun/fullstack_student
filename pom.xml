@@ -111,7 +111,7 @@
                                <image>openjdk:17</image>
                            </from>
                            <to>
-                               <image>s0517019/${app.image.name}:latest</image>
+                               <image>s0517019/${app.image.name}:${app.image.tag}</image>
                            </to>
                            <container>
                                <ports>
@@ -122,11 +122,23 @@
                        </configuration>
                        <executions>
                            <execution>
+                               <id>push-custom-tag</id>
+                               <phase>package</phase>
+                               <configuration>
+                                   <to>
+                                       <image>docker.io/s0517019/${app.image.name}:${app.image.tag}</image>
+                                   </to>
+                               </configuration>
+                               <goals>
+                                   <goal>build</goal>
+                               </goals>
+                           </execution>
+                           <execution>
                                <id>push-latest-tag</id>
                                <phase>package</phase>
                                <configuration>
                                    <to>
-                                       <image>s0517019/${app.image.name}:latest</image>
+                                       <image>docker.io/s0517019/${app.image.name}:latest</image>
                                    </to>
                                </configuration>
                                <goals>
@@ -155,7 +167,7 @@
                                 <image>openjdk:17</image>
                             </from>
                             <to>
-                                <image>docker.io/s0517019/${app.image.name}:latest</image>
+                                <image>s0517019/${app.image.name}:latest</image>
                             </to>
                             <container>
                                 <ports>
@@ -170,7 +182,7 @@
                                 <phase>package</phase>
                                 <configuration>
                                     <to>
-                                        <image>docker.io/s0517019/${app.image.name}:latest</image>
+                                        <image>s0517019/${app.image.name}:latest</image>
                                     </to>
                                 </configuration>
                                 <goals>
