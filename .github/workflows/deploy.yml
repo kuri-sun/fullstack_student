@@ -24,8 +24,6 @@ env:
   AWS_ECS_CONTAINER_NAME: student-fullstack-container
   AWS_ECS_SERVICE_NAME: student-fullstack-service
   AWS_ECS_CLUSTER_NAME: student-fullstack
-  # PRODUCTION DATABASE
-  DATABASE_URL: ${{ secret }}
 
 jobs:
   deploy:
