@@ -63,9 +63,6 @@ jobs:
         run: |
           ./mvnw --no-transfer-progress clean package \
             -P jib-push-to-aws \
-            -Ddatabase.url=${{ secrets.PROD_DATABASE_URL }} \
-            -Ddatabase.username=${{ secrets.PROD_DATABASE_USERNAME }} \
-            -Ddatabase.password=${{ secrets.PROD_DATABASE_PASSWORD }} \
             -Daws.ecr.url=${{ secrets.AWS_ECR_URL }} \
             -Dapp.image.tag=${{ env.APP_IMAGE_TAG }}
 
