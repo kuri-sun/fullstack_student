@@ -24,4 +24,14 @@ https://fullstack-student.netlify.app/  <br/>
 (Figure.2) Application and Cloud Architecture <br/><br/> 
 
 <img src="https://user-images.githubusercontent.com/62743644/175754999-247d12b5-bae1-4aa2-81ea-ce8f01c1dec1.jpeg" alt="cicd"/> <br/>
-(Figure.3) CICD pipeline flow <br/><br/> 
+(Figure.3) CICD pipeline flow <br/>
+
+# License
+
+    Copyright 2022 Haruki Kuriwada
+
+    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
