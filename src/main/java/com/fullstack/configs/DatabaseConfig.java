@@ -13,13 +13,13 @@ import javax.sql.DataSource;
 @Configuration
 public class DatabaseConfig {
 
-    @Value("${database.url}")
+    @Value("${postgres.datasource.url}")
     private String databaseUrl;
 
-    @Value("${database.username}")
+    @Value("${postgres.datasource.username}")
     private String databaseUsername;
 
-    @Value("${database.password}")
+    @Value("${postgres.datasource.password}")
     private String databasePassword;
 
     @Profile("default")
