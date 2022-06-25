@@ -59,7 +59,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Maven Clean Package and Push to Dockerhub
+      - name: Maven Clean Package and Push to Amazon ECR
         run: |
           ./mvnw --no-transfer-progress clean package \
             -P jib-push-to-aws \
