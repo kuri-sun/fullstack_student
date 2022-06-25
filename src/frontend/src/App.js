@@ -1,24 +1,29 @@
-import {useEffect, useState} from "react";
-import {deleteStudent, getAllStudents} from "./client";
+import { useEffect, useState } from "react";
+import { deleteStudent, getAllStudents } from "./client";
 import {
-    Avatar,
-    Badge,
-    Breadcrumb,
-    Button,
-    Divider,
-    Empty,
-    Layout,
-    Menu,
-    Popconfirm,
-    Radio,
-    Spin,
-    Table,
-    Tag,
+  Avatar,
+  Badge,
+  Breadcrumb,
+  Button,
+  Divider,
+  Empty,
+  Layout,
+  Menu,
+  Popconfirm,
+  Radio,
+  Spin,
+  Table,
+  Tag,
 } from "antd";
-import {LoadingOutlined, PlusOutlined, TeamOutlined, UserOutlined,} from "@ant-design/icons";
+import {
+  LoadingOutlined,
+  PlusOutlined,
+  TeamOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import StudentDrawerForm from "./StudentDrawerForm.js";
 import "./App.css";
-import {errorNotification, successNotification} from "./Notification";
+import { errorNotification, successNotification } from "./Notification";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -74,7 +79,7 @@ function App() {
         setStudents(data);
       })
       .catch((err) => {
-        console.log(err.response);
+        //console.log(err.response);
         err.response.json().then((res) => {
           errorNotification(
             "There was an issue",

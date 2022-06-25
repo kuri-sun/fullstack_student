@@ -1,5 +1,10 @@
 import fetch from "unfetch";
 
+// PROD
+const baseUrl = "https://hello-fullstack-student.name";
+// DEV
+//const baseUrl = "http://localhost:8080";
+
 // check http response from backend.
 const checkStatus = (response) => {
   if (response.ok) {
@@ -12,11 +17,12 @@ const checkStatus = (response) => {
 };
 
 // GET all students data from backend.
-export const getAllStudents = () => fetch("api/v1/students").then(checkStatus);
+export const getAllStudents = () =>
+  fetch(`${baseUrl}/api/v1/students`).then(checkStatus);
 
 // POST register new student data to backend.
 export const addNewStudent = (student) =>
-  fetch("api/v1/students", {
+  fetch(`${baseUrl}/api/v1/students`, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -26,7 +32,7 @@ export const addNewStudent = (student) =>
 
 // POST register new student data to backend.
 export const editStudent = (studentId, student) =>
-  fetch(`api/v1/students/${studentId}`, {
+  fetch(`${baseUrl}/api/v1/students/${studentId}`, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -36,6 +42,6 @@ export const editStudent = (studentId, student) =>
 
 // DELETE delete a student data.
 export const deleteStudent = (studentId) =>
-  fetch(`api/v1/students/${studentId}`, {
+  fetch(`${baseUrl}/api/v1/students/${studentId}`, {
     method: "DELETE",
   }).then(checkStatus);
