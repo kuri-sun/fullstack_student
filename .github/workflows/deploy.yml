@@ -48,23 +48,23 @@ jobs:
           distribution: 'temurin'
           java-version: ${{ env.JAVA_VERSION }}
 
-#      - name: Configure AWS credentials
-#        uses: aws-actions/configure-aws-credentials@v1
-#        with:
-#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#          aws-region: ${{ env.AWS_REGION }}
-#
-#      - name: Login to Amazon ECR
-#        id: login-ecr
-#        uses: aws-actions/amazon-ecr-login@v1
+      #      - name: Configure AWS credentials
+      #        uses: aws-actions/configure-aws-credentials@v1
+      #        with:
+      #          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #          aws-region: ${{ env.AWS_REGION }}
+      #
+      #      - name: Login to Amazon ECR
+      #        id: login-ecr
+      #        uses: aws-actions/amazon-ecr-login@v1
 
       - name: Maven Clean Package and Push to Amazon ECR
         run: |
           ./mvnw --no-transfer-progress clean package \
+            -Dapp.image.tag=${{ env.APP_IMAGE_TAG }}
 #            -P jib-push-to-aws \
 #            -Daws.ecr.url=${{ secrets.AWS_ECR_URL }} \
-            -Dapp.image.tag=${{ env.APP_IMAGE_TAG }}
 
 #      - name: Download ECS Task Definition JSON file
 #        env:
