@@ -1,7 +1,8 @@
 # Fullstack Student
 [![CICD](https://github.com/kuri-sun/fullstack_student/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/kuri-sun/fullstack_student/actions/workflows/deploy.yml)
 
-**Currently deploy this application on heroku, because of my budget.
+***Currently deploy this application on heroku, because of my budget.*** <br/>
+(But still CICD pipeline exists, and you can see AWS CICD process in deploy.ymal file.)
 
 This is Fullstack Application for maintaining student information.
 These are the list of technologies that I brought into this application.
