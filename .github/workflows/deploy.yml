@@ -48,42 +48,42 @@ jobs:
           distribution: 'temurin'
           java-version: ${{ env.JAVA_VERSION }}
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
-
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          aws-region: ${{ env.AWS_REGION }}
+#
+#      - name: Login to Amazon ECR
+#        id: login-ecr
+#        uses: aws-actions/amazon-ecr-login@v1
 
       - name: Maven Clean Package and Push to Amazon ECR
         run: |
           ./mvnw --no-transfer-progress clean package \
-            -P jib-push-to-aws \
-            -Daws.ecr.url=${{ secrets.AWS_ECR_URL }} \
+#            -P jib-push-to-aws \
+#            -Daws.ecr.url=${{ secrets.AWS_ECR_URL }} \
             -Dapp.image.tag=${{ env.APP_IMAGE_TAG }}
 
-      - name: Download ECS Task Definition JSON file
-        env:
-          ECS_TASK_DEFINITION: ${{ env.AWS_ECS_TASK_DEFINITION_NAME }}
-        run: |
-          aws ecs describe-task-definition --task-definition $ECS_TASK_DEFINITION --query taskDefinition > task-definition.json
-
-      - name: Fill in the new fields of the ECS Task Definition
-        id: task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
-        with:
-          task-definition: task-definition.json
-          container-name: ${{ env.AWS_ECS_CONTAINER_NAME }}
-          image: ${{ secrets.AWS_ECR_URL }}/${{ env.APP_IMAGE_IMAGE }}:${{ env.APP_IMAGE_TAG }}
-
-      - name: Deploy Amazon ECS Task Definition
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-        with:
-          task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: ${{ env.AWS_ECS_SERVICE_NAME }}
-          cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
-          wait-for-service-stability: true
+#      - name: Download ECS Task Definition JSON file
+#        env:
+#          ECS_TASK_DEFINITION: ${{ env.AWS_ECS_TASK_DEFINITION_NAME }}
+#        run: |
+#          aws ecs describe-task-definition --task-definition $ECS_TASK_DEFINITION --query taskDefinition > task-definition.json
+#
+#      - name: Fill in the new fields of the ECS Task Definition
+#        id: task-def
+#        uses: aws-actions/amazon-ecs-render-task-definition@v1
+#        with:
+#          task-definition: task-definition.json
+#          container-name: ${{ env.AWS_ECS_CONTAINER_NAME }}
+#          image: ${{ secrets.AWS_ECR_URL }}/${{ env.APP_IMAGE_IMAGE }}:${{ env.APP_IMAGE_TAG }}
+#
+#      - name: Deploy Amazon ECS Task Definition
+#        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+#        with:
+#          task-definition: ${{ steps.task-def.outputs.task-definition }}
+#          service: ${{ env.AWS_ECS_SERVICE_NAME }}
+#          cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
+#          wait-for-service-stability: true
