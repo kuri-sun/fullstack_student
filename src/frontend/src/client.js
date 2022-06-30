@@ -1,7 +1,7 @@
 import fetch from "unfetch";
 
-// PROD
-const baseUrl = "https://hello-fullstack-student.name";
+// PROD (temporary heroku deployment)
+const baseUrl = "https://student-fullstack-backend.herokuapp.com";
 // DEV
 //const baseUrl = "http://localhost:8080";
 
