@@ -20,6 +20,18 @@ These are the list of technologies that I brought into this application.
 You can see the application from below. <br/>
 https://fullstack-student.netlify.app/  <br/> 
 
+Start application in local (launch in port 3000)
+
+```
+// 1. start backend. make sure you're in base dir.
+mvn spring-boot:run
+
+// 2. start backend. make sure you're in base dir.
+cd src/frontend
+npm install
+npm run start
+```
+
 <img src="https://user-images.githubusercontent.com/62743644/175753658-674cb7eb-68ad-4ef5-bb67-5e9b152e4739.png" alt="looks"/> <br/>
 (Figure.1) Application looks <br/><br/> 
 
