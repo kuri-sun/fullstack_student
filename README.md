@@ -26,7 +26,7 @@ Start application in local (launch in port 3000)
 // 1. start backend. make sure you're in base dir.
 mvn spring-boot:run
 
-// 2. start backend. make sure you're in base dir.
+// 2. start frontend.
 cd src/frontend
 npm install
 npm run start
